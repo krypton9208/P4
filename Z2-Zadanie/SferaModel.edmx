@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SferaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Obiekty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nchar" MaxLength="100" />
+          <Property Name="Nazwa_technicza" Type="nchar" MaxLength="100" />
+          <Property Name="Powierzchnia_całkowita" Type="nchar" MaxLength="100" />
+          <Property Name="Typ_obiektu" Type="nchar" MaxLength="100" />
+          <Property Name="Liczba_miejsc_parkingowych" Type="int" />
+          <Property Name="Typ_działalności" Type="nchar" MaxLength="100" />
+          <Property Name="Powierzchnia_wynajmu" Type="int" />
+          <Property Name="Cena_wynajmu" Type="money" />
+          <Property Name="Data_początku_wynajmu" Type="date" />
+          <Property Name="Data_zakończenia_wynajmu" Type="date" />
+        </EntityType>
+        <EntityContainer Name="SferaModelStoreContainer">
+          <EntitySet Name="Obiekty" EntityType="Self.Obiekty" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SferaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Obiekt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Nazwa_technicza" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          </EntityType>
+        <EntityContainer Name="SferaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Obiekty" EntityType="SferaModel.Obiekt" />
+          </EntityContainer>
+        <EntityType Name="Poziom" BaseType="SferaModel.Obiekt" >
+          <Property Name="Powierzchnia_całkowita" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="Korytarz" BaseType="SferaModel.Poziom" />
+        <EntityType Name="ObiektDoWynajecia" BaseType="SferaModel.Korytarz" >
+          <Property Name="Typ_działalności" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Cena_wynajmu" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Data_początku_wynajmu" Type="DateTime" Precision="0" />
+          <Property Name="Data_zakończenia_wynajmu" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Stand" BaseType="SferaModel.ObiektDoWynajecia" />
+        <EntityType Name="PomieszczenieTechniczne" BaseType="SferaModel.Korytarz" />
+        <EntityType Name="Parking" BaseType="SferaModel.Obiekt" >
+          <Property Name="Liczba_miejsc_parkingowych" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Pomieszczenie" BaseType="SferaModel.ObiektDoWynajecia" >
+          <Property Name="Powierzchnia_wynajmu" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SferaModelStoreContainer" CdmEntityContainer="SferaEntities">
+          <EntitySetMapping Name="Obiekty">
+            <EntityTypeMapping TypeName="IsTypeOf(SferaModel.Obiekt)">
+              <MappingFragment StoreEntitySet="Obiekty">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nazwa_technicza" ColumnName="Nazwa_technicza" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="SferaModel.Poziom">
+              <MappingFragment StoreEntitySet="Obiekty">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Powierzchnia_całkowita" ColumnName="Powierzchnia_całkowita" />
+                <Condition ColumnName="Typ_obiektu" Value="Poziom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="SferaModel.Korytarz">
+              <MappingFragment StoreEntitySet="Obiekty">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nazwa_technicza" ColumnName="Nazwa_technicza" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Powierzchnia_całkowita" ColumnName="Powierzchnia_całkowita" />
+                <Condition ColumnName="Typ_obiektu" Value="Korytarz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(SferaModel.Parking)">
+              <MappingFragment StoreEntitySet="Obiekty">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Liczba_miejsc_parkingowych" ColumnName="Liczba_miejsc_parkingowych" />
+                <Condition ColumnName="Typ_obiektu" Value="Parking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="SferaModel.ObiektDoWynajecia">
+              <MappingFragment StoreEntitySet="Obiekty">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nazwa_technicza" ColumnName="Nazwa_technicza" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Powierzchnia_całkowita" ColumnName="Powierzchnia_całkowita" />
+                <ScalarProperty Name="Data_zakończenia_wynajmu" ColumnName="Data_zakończenia_wynajmu" />
+                <ScalarProperty Name="Data_początku_wynajmu" ColumnName="Data_początku_wynajmu" />
+                <ScalarProperty Name="Cena_wynajmu" ColumnName="Cena_wynajmu" />
+                <ScalarProperty Name="Typ_działalności" ColumnName="Typ_działalności" />
+                <Condition ColumnName="Typ_obiektu" Value="Obiekt do wynajecia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(SferaModel.PomieszczenieTechniczne)">
+              <MappingFragment StoreEntitySet="Obiekty">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nazwa_technicza" ColumnName="Nazwa_technicza" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Powierzchnia_całkowita" ColumnName="Powierzchnia_całkowita" />
+                <Condition ColumnName="Typ_obiektu" Value="Pomieszczenie technicze" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(SferaModel.Stand)">
+              <MappingFragment StoreEntitySet="Obiekty">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nazwa_technicza" ColumnName="Nazwa_technicza" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Powierzchnia_całkowita" ColumnName="Powierzchnia_całkowita" />
+                <ScalarProperty Name="Data_zakończenia_wynajmu" ColumnName="Data_zakończenia_wynajmu" />
+                <ScalarProperty Name="Data_początku_wynajmu" ColumnName="Data_początku_wynajmu" />
+                <ScalarProperty Name="Cena_wynajmu" ColumnName="Cena_wynajmu" />
+                <ScalarProperty Name="Typ_działalności" ColumnName="Typ_działalności" />
+                <Condition ColumnName="Typ_obiektu" Value="Stand" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(SferaModel.Pomieszczenie)">
+              <MappingFragment StoreEntitySet="Obiekty">
+                <ScalarProperty Name="Powierzchnia_wynajmu" ColumnName="Powierzchnia_wynajmu" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nazwa_technicza" ColumnName="Nazwa_technicza" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Powierzchnia_całkowita" ColumnName="Powierzchnia_całkowita" />
+                <ScalarProperty Name="Data_zakończenia_wynajmu" ColumnName="Data_zakończenia_wynajmu" />
+                <ScalarProperty Name="Data_początku_wynajmu" ColumnName="Data_początku_wynajmu" />
+                <ScalarProperty Name="Cena_wynajmu" ColumnName="Cena_wynajmu" />
+                <ScalarProperty Name="Typ_działalności" ColumnName="Typ_działalności" />
+                <Condition ColumnName="Typ_obiektu" Value="Pomieszczenie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

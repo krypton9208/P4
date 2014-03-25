@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="becc6991d3b445f4a44c6f1b17335503" Name="Diagram1" ZoomLevel="53">
+        <EntityTypeShape EntityType="SferaModel.Obiekt" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SferaModel.Poziom" Width="2.25" PointX="3.75" PointY="1.75" />
+        <InheritanceConnector EntityType="SferaModel.Poziom" />
+        <EntityTypeShape EntityType="SferaModel.Korytarz" Width="1.5" PointX="6.25" PointY="1.625" />
+        <InheritanceConnector EntityType="SferaModel.Korytarz" />
+        <EntityTypeShape EntityType="SferaModel.ObiektDoWynajecia" Width="1.5" PointX="8.75" PointY="2.375" />
+        <InheritanceConnector EntityType="SferaModel.ObiektDoWynajecia" />
+        <EntityTypeShape EntityType="SferaModel.Stand" Width="1.5" PointX="13.625" PointY="2.375" />
+        <InheritanceConnector EntityType="SferaModel.Stand" />
+        <EntityTypeShape EntityType="SferaModel.PomieszczenieTechniczne" Width="1.5" PointX="11.375" PointY="1" />
+        <InheritanceConnector EntityType="SferaModel.PomieszczenieTechniczne" />
+        <EntityTypeShape EntityType="SferaModel.Parking" Width="1.5" PointX="8.75" PointY="0.625" />
+        <InheritanceConnector EntityType="SferaModel.Parking" />
+        <InheritanceConnector EntityType="SferaModel.Poziom" />
+        <InheritanceConnector EntityType="SferaModel.Parking" />
+        <EntityTypeShape EntityType="SferaModel.Pomieszczenie" Width="1.5" PointX="11.5" PointY="3.875" />
+        <InheritanceConnector EntityType="SferaModel.Pomieszczenie" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
