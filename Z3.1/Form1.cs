@@ -47,39 +47,29 @@ namespace Z3._1
 
         private int RoundTo(int x)
         {
-            string t = Convert.ToString(x);
-            char[] tab = new char[t.Length];
-            if (Convert.ToInt32(t[t.Length - 1]) < 5) 
-            { 
-                tab[t.Length - 1] = '0'; 
-            }
-            if (Convert.ToInt32(t[t.Length - 1]) >= 5) 
+            double k = 0;
+            if (x % 10 < 5)
             {
-                int y = Convert.ToInt32(t[t.Length - 2]);
-                y += 1;
-                string j = Convert.ToString(y);
-                char r = Convert.ToChar(j);
-                tab[t.Length - 2] = r;
-                tab[t.Length-1] = '0';
+                k = (Math.Round((x) /10.0)) * 10;
+                if (k > trackBar1.Maximum) k = trackBar1.Maximum;
             }
-            t = "";
-            return Convert.ToInt32(tab);
-
+            else if (x % 10 >= 5)
+            {
+                k = (Math.Round((x + 10) /10.0)) * 10;
+                if (k > trackBar1.Maximum) k = trackBar1.Maximum;
+            }
+            return Convert.ToInt32(k);
         }
         private void trackBar1_Scroll_1(object sender, EventArgs e)
         {
-            if (trackBar1.Value % 5 != 0) RoundTo(trackBar1.Value);
-           
-            label1.Text = Convert.ToString(trackBar1.Value);
+            
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
-            {
-                case System.Windows.Forms.Keys.Right : trackBar1.Value += 5; break;
-                case Keys.Left : trackBar1.Value -= 5;break;
-            };
+            if (e.KeyCode == Keys.Right) if (trackBar1.Value != trackBar1.Maximum)  trackBar1.Value += 5;  
+            if (e.KeyCode == Keys.Left)  if (trackBar1.Value != trackBar1.Minimum)  trackBar1.Value -= 5;
+            
             label1.Text = Convert.ToString((trackBar1.Value));
             label1.Text = label1.Text.Insert(label1.Text.Length - 2, ",");
         }
@@ -96,7 +86,14 @@ namespace Z3._1
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
+            if (trackBar1.Value % 5 != 0) trackBar1.Value = RoundTo(trackBar1.Value);
+            label1.Text = Convert.ToString(trackBar1.Value);
             label1.Text = label1.Text.Insert(label1.Text.Length - 2, ",");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            panel1.Enabled = false;
         }
     }
 }
