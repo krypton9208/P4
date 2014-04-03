@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z2.3", "Z2.3\Z2.3.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z2-Zadanie", "Z2-Zadanie\Z2-Zadanie.csproj", "{10E0AEC7-B8A5-4984-8283-27C2968A18C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z3.1", "Z3.1\Z3.1.csproj", "{1C08EAB0-A94C-4F5F-A993-5D34B2416DD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z3.1 - Radio", "Z3.1\Z3.1 - Radio.csproj", "{1C08EAB0-A94C-4F5F-A993-5D34B2416DD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
