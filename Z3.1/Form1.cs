@@ -8,64 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Text;
-
-namespace Ini
-{
-    /// <summary>
-    /// Create a New INI file to store or load data
-    /// </summary>
-    public class IniFile
-    {
-        public string path;
-
-        [DllImport("kernel32")]
-        private static extern long WritePrivateProfileString(string section,
-            string key, string val, string filePath);
-        [DllImport("kernel32")]
-        private static extern int GetPrivateProfileString(string section,
-                 string key, string def, StringBuilder retVal,
-            int size, string filePath);
-
-        /// <summary>
-        /// INIFile Constructor.
-        /// </summary>
-        /// <PARAM name="INIPath"></PARAM>
-        public IniFile(string INIPath)
-        {
-            path = INIPath;
-        }
-        /// <summary>
-        /// Write Data to the INI File
-        /// </summary>
-        /// <PARAM name="Section"></PARAM>
-        /// Section name
-        /// <PARAM name="Key"></PARAM>
-        /// Key Name
-        /// <PARAM name="Value"></PARAM>
-        /// Value Name
-        public void IniWriteValue(string Section, string Key, string Value)
-        {
-            WritePrivateProfileString(Section, Key, Value, this.path);
-        }
-
-        /// <summary>
-        /// Read Data Value From the Ini File
-        /// </summary>
-        /// <PARAM name="Section"></PARAM>
-        /// <PARAM name="Key"></PARAM>
-        /// <PARAM name="Path"></PARAM>
-        /// <returns></returns>
-        public string IniReadValue(string Section, string Key)
-        {
-            StringBuilder temp = new StringBuilder(255);
-            int i = GetPrivateProfileString(Section, Key, "", temp,
-                                            255, this.path);
-            return temp.ToString();
-
-        }
-    }
-}
 
 namespace Z3._1
 {
@@ -73,6 +15,24 @@ namespace Z3._1
     {
         public int[] stacja = new int[6];
         public int stacjaw = 1;
+        public int PoczRDS = 0;
+        public static int KoncRDS = 20;
+        public string TekstRDS = "To jest super idealna stacja do słuchania na moim idealnym C#'arpowym Radiu";
+        public Form1()
+        {
+            InitializeComponent();
+            //var rand = new Random();
+            iniFile(".\\stacje.ini");
+            for (int i = 0; i < stacja.Count(); i++)
+            {
+                //    stacja[i] = Convert.ToInt32((87.0 + rand.Next(1, 20))*100);
+                stacja[i] = Convert.ToInt32(GetString("Stacje", ("Radio" + i), "8700"));
+            };
+            panel1.Enabled = false;
+            iniFile(".\\stacje.ini");
+
+
+        }
         [DllImport("kernel32.dll", EntryPoint = "GetPrivateProfileStringA", ExactSpelling = true, CharSet = CharSet.Ansi, SetLastError = true)]
         private static extern int GetPrivateProfileString(string lpApplicationName, string lpKeyName, string lpDefault, System.Text.StringBuilder lpReturnedString, int nSize, string lpFileName);
         [DllImport("kernel32.dll", EntryPoint = "WritePrivateProfileStringA", ExactSpelling = true, CharSet = CharSet.Ansi, SetLastError = true)]
@@ -82,7 +42,8 @@ namespace Z3._1
         [DllImport("kernel32.dll", EntryPoint = "WritePrivateProfileStringA", ExactSpelling = true, CharSet = CharSet.Ansi, SetLastError = true)]
         private static extern int FlushPrivateProfileString(int lpApplicationName, int lpKeyName, int lpString, string lpFileName);
 
-        string strFilename; 
+        string strFilename;
+        
         private void iniFile(string Filename) 
         {
             strFilename = Filename;
@@ -93,7 +54,7 @@ namespace Z3._1
              {
               return strFilename;
              }
-        }//Tworzymy funkcje odczytu i zapisu informacji w pliku:
+        }
 
         private string GetString(string Section, string Key, string @Default)
         {
@@ -135,21 +96,7 @@ namespace Z3._1
         {
            FlushPrivateProfileString(0, 0, 0, strFilename);
         }
-        public Form1()
-        {
-            InitializeComponent();
-            //var rand = new Random();
-            iniFile(".\\stacje.ini");
-            for (int i = 0; i < stacja.Count(); i++)
-            {
-            //    stacja[i] = Convert.ToInt32((87.0 + rand.Next(1, 20))*100);
-                stacja[i] = Convert.ToInt32(GetString("Stacje", ("Radio" + i), "8700"));
-            };
-            panel1.Enabled = false;
-            iniFile(".\\stacje.ini");
-             
-
-        }
+       
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -158,12 +105,14 @@ namespace Z3._1
                 button1.Text = "Wyłącz radio";
                 panel1.Enabled = true;
                 SetRadio(stacjaw);
-                
+                button2.Enabled = false;
+                timer1.Enabled = true;
             }
             else
             {
                 panel1.Enabled = false;
                 button1.Text = "Włącz radio";
+                timer1.Enabled = false;
             }
         }
 
@@ -310,6 +259,28 @@ namespace Z3._1
         private void button8_Click(object sender, EventArgs e)
         {
             stacja[stacjaw-1] = trackBar1.Value;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            for (int i = 0; i < stacja.Count(); i++)
+            {
+                WriteString("Stacje", ("Radio" + Convert.ToString(i)), Convert.ToString(stacja[i]));
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (PoczRDS + 19 != TekstRDS.Length)
+            {
+                RDS.Text = TekstRDS.Substring(PoczRDS, KoncRDS);
+                PoczRDS++;
+            }
+            else
+            {
+                PoczRDS = 0;
+                RDS.Text = TekstRDS.Substring(PoczRDS, KoncRDS);
+            }
         }
     }
 }
