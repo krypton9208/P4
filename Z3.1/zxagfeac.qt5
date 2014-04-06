@@ -100,13 +100,14 @@
             this.trackBar2.TickFrequency = 5;
             this.trackBar2.Value = 50;
             this.trackBar2.ValueChanged += new System.EventHandler(this.trackBar2_ValueChanged);
+            this.trackBar2.MouseHover += new System.EventHandler(this.trackBar2_MouseHover);
             // 
             // RDS
             // 
             this.RDS.AutoSize = true;
             this.RDS.Font = new System.Drawing.Font("Comic Sans MS", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.RDS.ForeColor = System.Drawing.Color.Red;
-            this.RDS.Location = new System.Drawing.Point(98, 116);
+            this.RDS.Location = new System.Drawing.Point(135, 119);
             this.RDS.Name = "RDS";
             this.RDS.Size = new System.Drawing.Size(0, 45);
             this.RDS.TabIndex = 17;
@@ -268,7 +269,7 @@
             // timer3
             // 
             this.timer3.Enabled = true;
-            this.timer3.Interval = 500;
+            this.timer3.Interval = 1;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // Form1
@@ -318,7 +319,7 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TrackBar trackBar2;
-        public System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Timer timer3;
 
 
     }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
+
 namespace Z3._1
 {
     public partial class Form1 : Form
@@ -17,6 +18,7 @@ namespace Z3._1
         public int stacjaw = 1;
         public int PoczRDS = 0;
         public static int KoncRDS = 20;
+        public int h = 0;
         public string TekstRDS = "To jest super idealna stacja do słuchania na moim idealnym C#'arpowym Radiu";
         public Form1()
         {
@@ -25,11 +27,11 @@ namespace Z3._1
             iniFile(".\\stacje.ini");
             for (int i = 0; i < stacja.Count(); i++)
             {
-                //    stacja[i] = Convert.ToInt32((87.0 + rand.Next(1, 20))*100);
                 stacja[i] = Convert.ToInt32(GetString("Stacje", ("Radio" + i), "8700"));
             };
+            trackBar2.Value = Convert.ToInt32(GetString("Radio", "Głośność", "50"));
             panel1.Enabled = false;
-            iniFile(".\\stacje.ini");
+            
 
 
         }
@@ -69,11 +71,7 @@ namespace Z3._1
            return returnValue;
         } 
 
-        private bool GetBoolean(string Section, string Key, bool @Default)
-        { // Odczyt boolean z pliku ini
-           return (GetPrivateProfileInt(Section, Key, System.Convert.ToInt32(@Default), strFilename) == 1);
-        } 
-
+        
         private void WriteString(string Section, string Key, string Value)
         {// Zapis tekstu do pliku ini
            WritePrivateProfileString(Section, Key, Value, strFilename);
@@ -105,7 +103,6 @@ namespace Z3._1
                 button1.Text = "Wyłącz radio";
                 panel1.Enabled = true;
                 SetRadio(stacjaw);
-                button2.Enabled = false;
                 timer1.Enabled = true;
             }
             else
@@ -150,66 +147,31 @@ namespace Z3._1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            button2.Enabled = false;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
+            
             SetRadio(1);
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            button2.Enabled = true;
-            button3.Enabled = false;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
             SetRadio(2);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = false;
-            button5.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
             SetRadio(3);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button5.Enabled = false;
-            button6.Enabled = true;
-            button7.Enabled = true;
             SetRadio(4);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            button6.Enabled = false;
-            button7.Enabled = true;
             SetRadio(5);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = false;
             SetRadio(6);
         }
 
@@ -267,9 +229,10 @@ namespace Z3._1
             {
                 WriteString("Stacje", ("Radio" + Convert.ToString(i)), Convert.ToString(stacja[i]));
             }
+            WriteInteger("Radio", "Głośność", trackBar2.Value);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void RDSF()
         {
             if (PoczRDS + 19 != TekstRDS.Length)
             {
@@ -281,6 +244,50 @@ namespace Z3._1
                 PoczRDS = 0;
                 RDS.Text = TekstRDS.Substring(PoczRDS, KoncRDS);
             }
+        
+        }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            DateTime dateLocal = DateTime.Now;
+            label3.Text = dateLocal.ToString();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            trackBar2.Value = 0;
+        }
+
+        
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            RDSF();
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            if (h == 3)
+            {
+                timer3.Stop();
+                timer1.Enabled = true;
+                timer1.Start();
+                RDSF();
+                
+            }
+            h += 1;
+            
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            timer3.Stop();
+        }
+
+        private void trackBar2_ValueChanged(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            h = 0;
+            RDS.Text = "Głośność " + Convert.ToString(trackBar2.Value);
+            timer3.Start();
         }
     }
 }
