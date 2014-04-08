@@ -57,7 +57,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.czcionkaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -235,7 +234,6 @@
             | System.Windows.Forms.Keys.S)));
             this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako...";
-            this.zapiszJakoToolStripMenuItem.Click += new System.EventHandler(this.zapiszJakoToolStripMenuItem_Click);
             // 
             // wyjdźToolStripMenuItem
             // 
@@ -282,15 +280,9 @@
             // 
             // openFileDialog1
             // 
+            this.openFileDialog1.DefaultExt = "*.txt";
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "\"Text files (*.txt)|*.txt|All files (*.*)|*.*\"";
             this.openFileDialog1.Title = "Otwórz..";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.Filter = "\"Pliki tekstowe (*.txt)|*.txt|All files (*.*)|*.*\"";
-            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
             // Form1
             // 
@@ -343,7 +335,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem czcionkaToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
