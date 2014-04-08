@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z2-Zadanie", "Z2-Zadanie\Z2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z3.1 - Radio", "Z3.1\Z3.1 - Radio.csproj", "{1C08EAB0-A94C-4F5F-A993-5D34B2416DD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z4 - NoteSharp", "Z4 - NoteSharp\Z4 - NoteSharp.csproj", "{11E61AA1-184B-4C12-9E8F-FE67E13334D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1C08EAB0-A94C-4F5F-A993-5D34B2416DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C08EAB0-A94C-4F5F-A993-5D34B2416DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C08EAB0-A94C-4F5F-A993-5D34B2416DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11E61AA1-184B-4C12-9E8F-FE67E13334D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11E61AA1-184B-4C12-9E8F-FE67E13334D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11E61AA1-184B-4C12-9E8F-FE67E13334D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11E61AA1-184B-4C12-9E8F-FE67E13334D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
