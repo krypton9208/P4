@@ -17,15 +17,13 @@ namespace Z4___NoteSharp
     public partial class Form1 : Form
     {
         string FilePath;
+        Boolean RTF = false;
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
+        
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -71,16 +69,11 @@ namespace Z4___NoteSharp
             richTextBox1.SelectionFont = fontDialog1.Font;
             richTextBox1.SelectionColor = fontDialog1.Color;
         }
-        private void czcionkaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            fontDialog1.ShowColor = true;
-            fontDialog1.ShowEffects = true;
-            fontDialog1.ShowDialog();
-        }
+        
 
         private void zapiszToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (StreamWriter writer = new StreamWriter(FilePath, true, Encoding.GetEncoding(1251)))
+            using (StreamWriter writer = new StreamWriter(FilePath, false, Encoding.Default))
             {
                 foreach (string line in richTextBox1.Lines)
                     writer.WriteLine(line);
@@ -94,12 +87,19 @@ namespace Z4___NoteSharp
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-            
-            //openFileDialog1.OpenFile();
             FilePath = openFileDialog1.FileName;
-            StreamReader sr = new StreamReader(FilePath, Encoding.GetEncoding(1251));
-            richTextBox1.Text = sr.ReadToEnd();
-            sr.Close();
+            if (FilePath.Substring(FilePath.Length - 3, 3) != "rtf")
+            {
+                StreamReader sr = new StreamReader(FilePath, Encoding.Default);
+                richTextBox1.Text = sr.ReadToEnd();
+                sr.Close();
+                RTF = false;
+            }
+            else
+            {
+                richTextBox1.LoadFile(FilePath);
+                RTF = true;
+            }
         }
 
         private void zapiszJakoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,13 +110,51 @@ namespace Z4___NoteSharp
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-
-
-            using (StreamWriter writer = new StreamWriter(FilePath, true, Encoding.GetEncoding(1251)))
+            string FilePath = saveFileDialog1.FileName;
+            if (FilePath.Substring(FilePath.Length - 3, 3) == "rtf") RTF = true; else RTF = false;
+            if (RTF)
             {
-                foreach (string line in richTextBox1.Lines)
-                    writer.WriteLine(line);
+                using (StreamWriter writer = new StreamWriter(FilePath, true, Encoding.Default))
+                {
+                    foreach (string line in richTextBox1.Lines)
+                        writer.WriteLine(line);
+                }
             }
+            else
+            {
+                richTextBox1.SaveFile(FilePath);
+            }
+        }
+
+        private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FilePath = "";
+            openFileDialog1.FileName = "";
+            saveFileDialog1.FileName = "";
+            richTextBox1.Clear();
+        }
+
+        private void czcionkaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fontDialog1.ShowColor = true;
+            fontDialog1.ShowEffects = true;
+            fontDialog1.ShowDialog();
+        }
+
+        private void wytnijToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Cut();
+        }
+
+        private void kopiujToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Copy();
+        }
+
+        private void wklejToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Paste();
+            
         }
     }
 }
