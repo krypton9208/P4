@@ -26,14 +26,31 @@ namespace Wizytówka
             DataContext = new Person
             {
                 FirstName = "Damian",
-                LastName = "Krysta"
+                LastName = "Krysta",
+                City = "Mnich",
+                EMail = "krypton9208@gmail.com",
+                Phone = "793074615"
             };
+            //this.DataContext = DataContext;
      
         }
         public class Person
         {
             public string FirstName { get; set; }
             public string LastName { get; set; }
+            public string EMail { get; set; }
+            public string City { get; set; }
+            public string Phone { get; set; }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new Person
+            {
+                FirstName = "Damian",
+                LastName = "Krysta"
+            };
+            this.DataContext = DataContext;
         }
     }
 }
