@@ -318,7 +318,245 @@ namespace Monopoly
             {
                 case "City" :
                     {
-                        if (Pol.whoisowner() == actualnygracz || Pol.whoisowner() == null) GiveChoose(Pol.WhitchPosition()) ;
+                        if (Pol.whoisowner() == 9) BuyObject.Visible = true;
+                        else if (Pol.whoisowner() == actualnygracz) BuyHouse.Visible = true;
+                        else if (Pol.whoisowner() == actualnygracz && Pol.HowHouse() <= 4) BuyHotel.Visible = true;
+                        else DoNothing.Visible = true;
+                        break;
+                    }
+                case "Quest":
+                    {
+                        if (Pol.WhitchPosition() == 3 || Pol.WhitchPosition() == 18 || Pol.WhitchPosition() == 34)
+                        {
+                            Random rnd = new Random();
+                            int t = rnd.Next(0, Niebieskie.Lines.Count());
+                            MessageBox.Show(Niebieskie.Lines[t]);
+                            switch (t)
+                            {
+                                case 0:
+                                    {
+                                        Gracze[actualnygracz].TakeMoney(400);
+                                        break;
+                                    }
+                                case 1:
+                                    {
+                                        Gracze[actualnygracz].GiveMoney(200);
+                                        break;
+                                    }
+                                case 2:
+                                    {
+                                        foreach (var a in Gracze)
+                                        {
+                                            a.TakeMoney(20);
+                                        }
+                                        Gracze[actualnygracz].GiveMoney(Gracze.Count * 20 + 20);
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        if (Gracze[actualnygracz].ActualPosition <= 31)
+                                        {
+                                            Gracze[actualnygracz].ActualPosition = 31;
+                                        }
+                                        else
+                                        {
+                                            Gracze[actualnygracz].GiveMoney(400);
+                                            Gracze[actualnygracz].ActualPosition = 31;
+                                        }
+                                        break;
+                                    }
+                                case 4:
+                                    {
+                                        Gracze[actualnygracz].GiveMoney(400);
+                                        break;
+                                    }
+                                case 5:
+                                    {
+                                        Gracze[actualnygracz].TakeMoney(20);
+                                        break;
+                                    }
+                                case 6:
+                                    {
+                                        Gracze[actualnygracz].FreeWiezenie = true;
+                                        break;
+                                    }
+                                case 7:
+                                    {
+                                        Gracze[actualnygracz].ActualPosition = 0;
+                                        break;
+                                    }
+                                case 8:
+                                    {
+                                        Gracze[actualnygracz].GiveMoney(20);
+                                        break;
+                                    }
+                                case 9:
+                                    {
+                                        Gracze[actualnygracz].GiveMoney(200);
+                                        break;
+                                    }
+                                case 10:
+                                    {
+                                        Gracze[actualnygracz].ActualPosition = 40;
+                                        break;
+                                    }
+                                case 11:
+                                    {
+                                        Gracze[actualnygracz].TakeMoney(20);
+                                        break;
+                                    }
+                                case 12:
+                                    {
+                                        Gracze[actualnygracz].GiveMoney(200);
+                                        break;
+                                    }
+                                case 13:
+                                    {
+                                        Gracze[actualnygracz].GiveMoney(40);
+                                        break;
+                                    }
+                                case 14:
+                                    {
+                                        Gracze[actualnygracz].GiveMoney(50);
+                                        break;
+                                    }
+                                case 15:
+                                    {
+                                        Gracze[actualnygracz].TakeMoney(20);
+                                        break;
+                                    }
+                            }
+                        }
+                        if (Pol.WhitchPosition() == 8 || Pol.WhitchPosition() == 23 || Pol.WhitchPosition() == 36)
+                        {
+                            Random rnd = new Random();
+                            int t = rnd.Next(0, Czerwone.Lines.Count());
+                            MessageBox.Show(Czerwone.Lines[t]);
+                            switch (t)
+                            {
+                                case 0:
+                                    {
+                                        Gracze[actualnygracz].TakeMoney((Gracze[actualnygracz].HotelNumber * 230) + (Gracze[actualnygracz].HouseNumber * 80));
+                                        break;
+                                    }
+                                case 1:
+                                    {
+                                        Gracze[actualnygracz].TakeMoney((Gracze[actualnygracz].HotelNumber * 200) + (Gracze[actualnygracz].HouseNumber * 50));
+                                        break;
+                                    }
+                                case 2:
+                                    {
+                                        Gracze[actualnygracz].ActualPosition = 15;
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        Gracze[actualnygracz].TakeMoney(30);
+                                        break;
+                                    }
+                                case 4:
+                                    {   
+                                        Gracze[actualnygracz].ActualPosition -= 3;
+                                        if (Gracze[actualnygracz].ActualPosition < 0) Gracze[actualnygracz].ActualPosition += 40;
+                                        break;
+                                    }
+                                case 5:
+                                    {
+                                        Gracze[actualnygracz].ActualPosition = 1;
+                                        break;
+                                    }
+                                case 6:
+                                    {
+                                        Gracze[actualnygracz].GiveMoney(200);
+                                        break;
+                                    }
+                                case 7:
+                                    {
+                                        if (Gracze[actualnygracz].ActualPosition <= 31)
+                                        {
+                                            Gracze[actualnygracz].ActualPosition = 31;
+                                        }
+                                        else
+                                        {
+                                            Gracze[actualnygracz].GiveMoney(400);
+                                            Gracze[actualnygracz].ActualPosition = 31;
+                                        }
+                                        break;
+                                    }
+                                case 8:
+                                    {
+                                        Gracze[actualnygracz].TakeMoney(300);
+                                        break;
+                                    }
+                                case 9:
+                                    {   
+                                        if (Gracze[actualnygracz].ActualPosition <= 7)
+                                        {
+                                            Gracze[actualnygracz].ActualPosition = 7;
+                                        }
+                                        else
+                                        {
+                                            Gracze[actualnygracz].GiveMoney(400);
+                                            Gracze[actualnygracz].ActualPosition = 7;
+                                        }
+                                        break;
+                                    }
+                                case 10:
+                                    {
+                                        Gracze[actualnygracz].TakeMoney(40);
+                                        break;
+                                    }
+                                case 11:
+                                    {
+                                        if (Gracze[actualnygracz].ActualPosition <= 24)
+                                        {
+                                            Gracze[actualnygracz].ActualPosition = 24;
+                                        }
+                                        else
+                                        {
+                                            Gracze[actualnygracz].GiveMoney(400);
+                                            Gracze[actualnygracz].ActualPosition = 24;
+                                        }
+                                        break;
+                                    }
+                                case 12:
+                                    {
+                                        Gracze[actualnygracz].GiveMoney(100);
+                                        break;
+                                    }
+                                case 13:
+                                    {
+                                        if (Gracze[actualnygracz].ActualPosition <= 36)
+                                        {
+                                            Gracze[actualnygracz].ActualPosition = 36;
+                                        }
+                                        else
+                                        {
+                                            Gracze[actualnygracz].GiveMoney(400);
+                                            Gracze[actualnygracz].ActualPosition = 36;
+                                        }
+                                        break;
+                                    }
+                                case 14:
+                                    {
+                                        Gracze[actualnygracz].GiveMoney(300);
+                                        break;
+                                    }
+                                case 15:
+                                    {
+                                        Gracze[actualnygracz].FreeWiezenie = true;
+                                        break;
+                                    }
+                            }
+                            MooveHorse(actualnygracz, 0);
+                        }
+
+                        break;
+                    }
+
+                default: 
+                    {
+                        DoNothing.Visible = true;
                         break;
                     }
             }
@@ -327,13 +565,7 @@ namespace Monopoly
 
         private void GiveChoose(int x)
         {
-            var button = new Button()
-            {
-                Text = "Kup miasto",
-                Parent = panel2,
-                Left = 5,
-                Top = 10
-            };
+            
         }
 
         private void panel_click(object sender, EventArgs e)
@@ -346,13 +578,10 @@ namespace Monopoly
         {
             Random rnd = new Random();
             label1.Text = Convert.ToString(rnd.Next(1, 13));
-            
+            MooveHorse(actualnygracz, Convert.ToInt32(label1.Text));
             if (actualnygracz == Gracze.Count-1) actualnygracz = 0;
             else actualnygracz++;
-            MooveHorse(actualnygracz, Convert.ToInt32(label1.Text));
-
-            
-   
+            button1.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -360,10 +589,9 @@ namespace Monopoly
             if (Gracze.Count <= 7)
             {
                 textBox1.Text = "";
-                textBox1.Visible = true;
-                pictureBox9.Visible = true;
                 pictureBox9.Image = imageList1.Images[0];
-                button3.Visible = true;
+                groupBox1.Visible = true;
+                
             }
             else MessageBox.Show("Maksymalna liczba graczy.");
         }
@@ -385,19 +613,24 @@ namespace Monopoly
         private void button3_Click(object sender, EventArgs e)
         {
             Gracze.Add(new Gracz(textBox1.Text, 2000, temp1, Gracze.Count));
-            textBox1.Visible = false;
             imageList2.Images.Add(imageList1.Images[Someint]);
             imageList1.Images.RemoveAt(Someint);
             Gracze[Gracze.Count-1].Pionek.Image = imageList2.Images[Gracze[Gracze.Count-1].Figure];
             Gracze[Gracze.Count-1].Pionek.Visible = true;
-            pictureBox9.Visible = false;
-            button3.Visible = false;
+            groupBox1.Visible = false;
+            ListViewItem item = new ListViewItem(Gracze[temp1].Name);
+            item.SubItems.Add(Gracze[temp1].CashState().ToString());
+            item.SubItems.Add(0.ToString());
+            item.SubItems.Add(0.ToString());
+            item.SubItems.Add(0.ToString());
+            listView1.Items.Add(item);
             temp1++;
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            MooveHorse(actualnygracz, Convert.ToInt32(label1.Text));
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -406,6 +639,50 @@ namespace Monopoly
             {
                 MooveHorse(i, 0);
             }
+            groupBox2.Visible = true;
+            AddPlayer.Visible = false;
+            button2.Visible = false;
+
+        }
+
+        public void UpdateListView()
+        {
+            listView1.Items.Clear();
+            foreach (var item in Gracze)
+            {
+                ListViewItem dane = new ListViewItem(item.Name);
+                dane.SubItems.Add(item.CashState().ToString());
+                dane.SubItems.Add(0.ToString());
+                dane.SubItems.Add(0.ToString());
+                listView1.Items.Add(dane);
+            }
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Pola[Gracze[actualnygracz].ActualPosition].NewOwner(actualnygracz);
+            Gracze[actualnygracz].BuyObject(Pola[Gracze[actualnygracz].ActualPosition].WhitchPosition(), Pola[Gracze[actualnygracz].ActualPosition].HowPrice());
+            button1.Enabled = true;
+            UpdateListView();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DoNothing_Click(object sender, EventArgs e)
+        {
+            button1.Enabled = true;
+            DoNothing.Visible = false;
+            BuyHotel.Visible = false;
+            BuyHouse.Visible = false;
+            BuyObject.Visible = false;
+            UpdateListView();
         }
 
       

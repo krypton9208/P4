@@ -29,6 +29,7 @@ namespace Monopoly
             ImgFIle = c;
             Type = d;
             Name = e;
+            OwnerId = 9;
         }
         public void NewOwner(int a)
         {

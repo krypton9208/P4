@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAU
-        EAAAAk1TRnQBSQFMAgEBCAEAAXABAAFwAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EAAAAk1TRnQBSQFMAgEBCAEAAcABAAHAAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAATADAAEBAQABCAYAAQwYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -199,4 +199,40 @@
   <metadata name="imageList2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>127, 17</value>
   </metadata>
+  <data name="Czerwone.Text" xml:space="preserve">
+    <value>Zobowiązany jesteś zmodernizować swoje miasto, płacisz za każdy dom 80 $,za każdy hotel 230 $. 
+Remontujesz swoje domy. Płacisz do banku za każdy dom 50 $, za każdy hotel 200 $. 
+Wracasz do Madrytu. 
+Mandat za szybko jazdę. Płacisz 30 $. 
+Cofasz się o trzy pola. 
+Wracasz na start. 
+Rozwiązałeś dobrze krzyżówkę. Jako 1 nagrodę otrzymujesz 200 $. 
+Idziesz do więzienia. Nie przechodzisz przez start. Nie otrzymujesz premii 400 $. 
+Płacisz opłatę za szkołę 300 $. 
+Idziesz do Neapolu. Jeżeli przechodzisz przez start otrzymujesz 400 $. 
+Piłeś w czasie pracy, płacisz karę 40 $. 
+Wracasz do "Brukseli". Jeżeli przechodzi przez start otrzymujesz 400 $. 
+Bank wypłaca Ci procenty w wysokości 100 $. 
+Idziesz do "KOLEI WSCHODNICH". Jeżeli przechodzisz przez start otrzymujesz 400 $. 
+Bank wpłaca Ci należne odsetki w wysokości 300 $. 
+Wychodzisz wolny z więzienia. Kartę należy zachować do wykorzystania lub sprzedania. </value>
+  </data>
+  <data name="Niebieskie.Text" xml:space="preserve">
+    <value>Płacisz na budowę szpitala 400 $. 
+Otrzymujesz w spadku 200 $. 
+Masz urodziny otrzymujesz od każdego gracza po 20 $. 
+Idziesz do więzienia. Nie przechodzisz przez start, nie otrzymujesz 400 $. 
+Bank omylił się na twoją korzyść otrzymujesz 400 $. 
+Płacisz składkę ubezpieczeniową w wysokości 20 $. 
+Wychodzisz wolny z więzienia. Kartę należy zachować do wykorzystania lub sprzedania. 
+Wracasz na start.
+Z magazynu, w którym kupujesz otrzymujesz rabat w wysokości 20 $. 
+Otrzymujesz roczną rentę w wysokości 200 $. 
+Wracasz do Wiednia. 
+Płacisz za kartę 20 $ lub ciągniesz szansę z drugiego zestawu. 
+Zająłeś II miejsce w konkursie piękności otrzymujesz z banku 200 $. 
+Otrzymujesz zwrot nadpłaconego podatku dochodowego 40 $. 
+Bank wypłaci ci należne 7% odsetek od kapitałów - otrzymujesz 50 $.
+Płacisz koszty leczenia w wysokości 20 $.</value>
+  </data>
 </root>
