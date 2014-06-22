@@ -21,10 +21,13 @@ namespace Monopoly
 
         public void BuyHouse()
         {
+            Cash -= 200;
             HouseNumber++;
         }
-        public void BuyHotel()
+        public void BuyHotel(int x)
         {
+        
+            Cash -= x;
             HotelNumber++;
         }
 

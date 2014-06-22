@@ -156,7 +156,7 @@
             this.panel2.Controls.Add(this.BuyHotel);
             this.panel2.Controls.Add(this.BuyHouse);
             this.panel2.Controls.Add(this.BuyObject);
-            this.panel2.Location = new System.Drawing.Point(694, 375);
+            this.panel2.Location = new System.Drawing.Point(740, 209);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(154, 267);
             this.panel2.TabIndex = 18;
@@ -191,6 +191,7 @@
             this.BuyHotel.Text = "Kup hotel";
             this.BuyHotel.UseVisualStyleBackColor = true;
             this.BuyHotel.Visible = false;
+            this.BuyHotel.Click += new System.EventHandler(this.BuyHotel_Click);
             // 
             // BuyHouse
             // 
@@ -237,10 +238,10 @@
             this.Hotele});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(134, 345);
+            this.listView1.Location = new System.Drawing.Point(134, 361);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(558, 97);
+            this.listView1.Size = new System.Drawing.Size(600, 115);
             this.listView1.TabIndex = 20;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;

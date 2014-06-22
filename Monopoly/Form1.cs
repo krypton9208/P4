@@ -549,8 +549,39 @@ namespace Monopoly
                                     }
                             }
                             MooveHorse(actualnygracz, 0);
+                            
                         }
-
+                        actualnygracz++;
+                        button1.Visible = true;
+                        break;
+                    }
+                case "Spec":
+                    {
+                        if ((Pol.WhitchPosition() == 6 || Pol.WhitchPosition() == 16 || Pol.WhitchPosition() == 26 || Pol.WhitchPosition() == 36) && Pol.whoisowner() == 9)
+                        {
+                            BuyObject.Visible = true;
+                            DoNothing.Visible = true;
+                        }
+                        if ((Pol.WhitchPosition() == 6 || Pol.WhitchPosition() == 16 || Pol.WhitchPosition() == 26 || Pol.WhitchPosition() == 36) && Pol.whoisowner() != 9)
+                        {
+                            int i = 0;
+                            if (Pola[5].whoisowner() == Pol.whoisowner()) i++;
+                            if (Pola[15].whoisowner() == Pol.whoisowner()) i++;
+                            if (Pola[25].whoisowner() == Pol.whoisowner()) i++;
+                            if (Pola[35].whoisowner() == Pol.whoisowner()) i++;
+                            Gracze[actualnygracz].TakeMoney(200 + i * 50);
+                        }
+                        if ((Pol.WhitchPosition() == 13 || Pol.WhitchPosition() == 29) && Pol.whoisowner() == 9)
+                        {
+                            BuyObject.Visible = true;
+                        }
+                        if ((Pol.WhitchPosition() == 13 || Pol.WhitchPosition() == 29) && Pol.whoisowner() != 9)
+                        {
+                            int o = 0;
+                            if (Pola[12].whoisowner() == Pol.whoisowner()) o++;
+                            if (Pola[28].whoisowner() == Pol.whoisowner()) o++;
+                            Gracze[actualnygracz].TakeMoney(200 + o * 100);
+                        }
                         break;
                     }
 
@@ -562,12 +593,6 @@ namespace Monopoly
             }
             
         }
-
-        private void GiveChoose(int x)
-        {
-            
-        }
-
         private void panel_click(object sender, EventArgs e)
         {
             var item = (sender as Panel);
@@ -667,7 +692,10 @@ namespace Monopoly
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            Pola[Gracze[actualnygracz].ActualPosition].NewHouse();
+            Gracze[actualnygracz].BuyHouse();
+            button1.Enabled = true;
+            UpdateListView();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -682,6 +710,14 @@ namespace Monopoly
             BuyHotel.Visible = false;
             BuyHouse.Visible = false;
             BuyObject.Visible = false;
+            UpdateListView();
+        }
+
+        private void BuyHotel_Click(object sender, EventArgs e)
+        {
+            Pola[Gracze[actualnygracz].ActualPosition].NewHouse();
+            Gracze[actualnygracz].BuyHotel(Pola[Gracze[actualnygracz].ActualPosition].HowHotel());
+            button1.Enabled = true;
             UpdateListView();
         }
 
