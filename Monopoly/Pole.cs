@@ -18,6 +18,7 @@ namespace Monopoly
         private int HotelNum { get; set; }
         private Types Type { get; set; }
 
+      
         public Panel Panelek;
         public int x { get; set; }
         public int y { get; set; }
@@ -33,7 +34,10 @@ namespace Monopoly
         }
         public void NewOwner(int a)
         {
+            HouseNum = 0;
+            HotelNum = 0;
             OwnerId = a;
+            
         }
         public void NewHouse()
         {
@@ -41,6 +45,7 @@ namespace Monopoly
         }
         public void NewHotel()
         {
+            HouseNum = 0;
             HotelNum++;
         }
 

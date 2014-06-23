@@ -55,6 +55,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Czerwone = new System.Windows.Forms.RichTextBox();
             this.Niebieskie = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -97,6 +99,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(110, 20);
             this.textBox1.TabIndex = 12;
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // imageList1
             // 
@@ -302,12 +305,33 @@
             this.Niebieskie.Text = resources.GetString("Niebieskie.Text");
             this.Niebieskie.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(228, 608);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(220, 36);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Aktualny gracz:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(449, 608);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 36);
+            this.label3.TabIndex = 25;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.Niebieskie);
             this.Controls.Add(this.Czerwone);
             this.Controls.Add(this.groupBox2);
@@ -329,6 +353,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -364,6 +389,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RichTextBox Czerwone;
         private System.Windows.Forms.RichTextBox Niebieskie;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
 
 
 

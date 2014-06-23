@@ -11,7 +11,8 @@ namespace Monopoly
     public class Gracz
     {
         public string Name { get; set; }
-        private  int[] Wposiadaniu = new int[35];
+        public int Wiezienie { get; set; }
+        public  int[] Wposiadaniu = new int[35];
         private int i=0;
         private double Cash { get; set; }
         public int Figure { get; set; }
@@ -40,6 +41,8 @@ namespace Monopoly
         {
             Cash -= x;
         }
+
+        
         public void BuyObject(int x, int Cost)
         {
             Wposiadaniu[i] = x;
@@ -47,6 +50,10 @@ namespace Monopoly
             Cash -= Cost;
         }
 
+        public int HowObject()
+        {
+            return i;
+        }
         private int SetLeftToPionek(int x)
         {
             if (x % 2 != 0) return 50;
