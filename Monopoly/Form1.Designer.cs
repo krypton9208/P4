@@ -35,17 +35,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.AddPlayer = new System.Windows.Forms.Button();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.button5 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DoNothing = new System.Windows.Forms.Button();
-            this.PayFine = new System.Windows.Forms.Button();
             this.BuyHotel = new System.Windows.Forms.Button();
             this.BuyHouse = new System.Windows.Forms.Button();
             this.BuyObject = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.Nazwa = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Pieniądze = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -57,15 +56,17 @@
             this.Niebieskie = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(17, 19);
+            this.button1.Location = new System.Drawing.Point(6, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(170, 65);
             this.button1.TabIndex = 9;
@@ -76,10 +77,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(235, 38);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(182, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 46);
+            this.label1.Size = new System.Drawing.Size(58, 63);
             this.label1.TabIndex = 10;
             this.label1.Text = "0";
             // 
@@ -114,17 +115,6 @@
             this.imageList1.Images.SetKeyName(6, "WHITE.png");
             this.imageList1.Images.SetKeyName(7, "YELLOW.png");
             // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox9.Location = new System.Drawing.Point(26, 45);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(101, 80);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 13;
-            this.pictureBox9.TabStop = false;
-            this.pictureBox9.Click += new System.EventHandler(this.pictureBox9_Click);
-            // 
             // AddPlayer
             // 
             this.AddPlayer.Location = new System.Drawing.Point(52, 131);
@@ -143,6 +133,7 @@
             // 
             // button5
             // 
+            this.button5.Enabled = false;
             this.button5.Location = new System.Drawing.Point(178, 253);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(98, 23);
@@ -155,18 +146,17 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.DoNothing);
-            this.panel2.Controls.Add(this.PayFine);
             this.panel2.Controls.Add(this.BuyHotel);
             this.panel2.Controls.Add(this.BuyHouse);
             this.panel2.Controls.Add(this.BuyObject);
-            this.panel2.Location = new System.Drawing.Point(740, 209);
+            this.panel2.Location = new System.Drawing.Point(740, 243);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(154, 267);
+            this.panel2.Size = new System.Drawing.Size(154, 220);
             this.panel2.TabIndex = 18;
             // 
             // DoNothing
             // 
-            this.DoNothing.Location = new System.Drawing.Point(3, 213);
+            this.DoNothing.Location = new System.Drawing.Point(3, 168);
             this.DoNothing.Name = "DoNothing";
             this.DoNothing.Size = new System.Drawing.Size(146, 45);
             this.DoNothing.TabIndex = 19;
@@ -175,19 +165,9 @@
             this.DoNothing.Visible = false;
             this.DoNothing.Click += new System.EventHandler(this.DoNothing_Click);
             // 
-            // PayFine
-            // 
-            this.PayFine.Location = new System.Drawing.Point(3, 162);
-            this.PayFine.Name = "PayFine";
-            this.PayFine.Size = new System.Drawing.Size(146, 45);
-            this.PayFine.TabIndex = 21;
-            this.PayFine.Text = "Zapłać karę";
-            this.PayFine.UseVisualStyleBackColor = true;
-            this.PayFine.Visible = false;
-            // 
             // BuyHotel
             // 
-            this.BuyHotel.Location = new System.Drawing.Point(3, 108);
+            this.BuyHotel.Location = new System.Drawing.Point(3, 114);
             this.BuyHotel.Name = "BuyHotel";
             this.BuyHotel.Size = new System.Drawing.Size(146, 48);
             this.BuyHotel.TabIndex = 20;
@@ -198,7 +178,7 @@
             // 
             // BuyHouse
             // 
-            this.BuyHouse.Location = new System.Drawing.Point(3, 57);
+            this.BuyHouse.Location = new System.Drawing.Point(3, 63);
             this.BuyHouse.Name = "BuyHouse";
             this.BuyHouse.Size = new System.Drawing.Size(146, 45);
             this.BuyHouse.TabIndex = 19;
@@ -209,7 +189,7 @@
             // 
             // BuyObject
             // 
-            this.BuyObject.Location = new System.Drawing.Point(3, 6);
+            this.BuyObject.Location = new System.Drawing.Point(3, 12);
             this.BuyObject.Name = "BuyObject";
             this.BuyObject.Size = new System.Drawing.Size(146, 45);
             this.BuyObject.TabIndex = 0;
@@ -231,6 +211,17 @@
             this.groupBox1.Text = "Dane gracza";
             this.groupBox1.Visible = false;
             // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox9.Location = new System.Drawing.Point(26, 45);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(101, 80);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 13;
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.Click += new System.EventHandler(this.pictureBox9_Click);
+            // 
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -241,14 +232,13 @@
             this.Hotele});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(134, 361);
+            this.listView1.Location = new System.Drawing.Point(134, 345);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(600, 115);
+            this.listView1.Size = new System.Drawing.Size(600, 172);
             this.listView1.TabIndex = 20;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // Nazwa
             // 
@@ -279,9 +269,9 @@
             // 
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(303, 482);
+            this.groupBox2.Location = new System.Drawing.Point(740, 482);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(320, 101);
+            this.groupBox2.Size = new System.Drawing.Size(270, 91);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kości";
@@ -309,7 +299,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(228, 608);
+            this.label2.Location = new System.Drawing.Point(228, 617);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(220, 36);
             this.label2.TabIndex = 24;
@@ -319,17 +309,28 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(449, 608);
+            this.label3.Location = new System.Drawing.Point(449, 617);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 36);
             this.label3.TabIndex = 25;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Monopoly.Properties.Resources.monopoly_us_pack_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(224, 656);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(640, 320);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1025, 741);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Niebieskie);
@@ -346,12 +347,13 @@
             this.Text = "Monopoly in Windows Form Aplication C#";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.panel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,7 +380,6 @@
         private System.Windows.Forms.Button BuyObject;
         private System.Windows.Forms.Button BuyHotel;
         private System.Windows.Forms.Button DoNothing;
-        private System.Windows.Forms.Button PayFine;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader Nazwa;
@@ -391,6 +392,7 @@
         private System.Windows.Forms.RichTextBox Niebieskie;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
 
 

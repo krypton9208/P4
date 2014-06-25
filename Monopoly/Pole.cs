@@ -22,8 +22,9 @@ namespace Monopoly
         public Panel Panelek;
         public int x { get; set; }
         public int y { get; set; }
+        public int HotelPrice { get; set; }
         public string Name { get; set; }
-        public Pole(int a, int b, string c, Types d, string e)
+        public Pole(int a, int b, string c, Types d, string e, int f)
         {
             Position = a;
             Price = b;
@@ -31,6 +32,7 @@ namespace Monopoly
             Type = d;
             Name = e;
             OwnerId = 9;
+            HotelPrice = f;
         }
         public void NewOwner(int a)
         {
@@ -41,6 +43,7 @@ namespace Monopoly
         }
         public void NewHouse()
         {
+            
             HouseNum++;
         }
         public void NewHotel()

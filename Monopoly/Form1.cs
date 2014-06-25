@@ -40,7 +40,8 @@ namespace Monopoly
                     Convert.ToInt32(xn["Value1"].InnerText),
                     xn["Value2"].InnerText,
                     Pole.Types.City,
-                    xn["Nazwa"].InnerText));
+                    xn["Nazwa"].InnerText,
+                    Convert.ToInt32(xn["Value3"].InnerText)));
             }
             XmlNodeList xnList2 = xml.SelectNodes("/Plansza/Atrakcje/Niebieskie");
             foreach (XmlNode xn in xnList2)
@@ -50,7 +51,7 @@ namespace Monopoly
                 0,
                 "",
                 Pole.Types.Quest,
-                "Niebieskie"));
+                "Niebieskie",0));
             }
             XmlNodeList xnList3 = xml.SelectNodes("/Plansza/Atrakcje/Czerwone");
             foreach (XmlNode xn in xnList3)
@@ -60,17 +61,17 @@ namespace Monopoly
                 0,
                 "",
                 Pole.Types.Quest,
-                "Czerwone"));
+                "Czerwone",0));
             }
             XmlNodeList xnList4 = xml.SelectNodes("/Plansza/Atrakcje/Kolej");
             foreach (XmlNode xn in xnList4)
             {
                 Pola.Add(new Pole(
                 Convert.ToInt32(xn["Value1"].InnerText),
-                0,
+                200,
                 "",
                 Pole.Types.Spec,
-                "Kolej"));
+                "Kolej",0));
             }
             XmlNodeList xnList5 = xml.SelectNodes("/Plansza/Atrakcje/Start");
             foreach (XmlNode xn in xnList5)
@@ -80,7 +81,7 @@ namespace Monopoly
                 Convert.ToInt32(xn["Value1"].InnerText),
                 "",
                 Pole.Types.Start,
-                "Punkt Startowy!"));
+                "Punkt Startowy!",0));
             }
             XmlNodeList xnList6 = xml.SelectNodes("/Plansza/Atrakcje/Wodociagi");
             foreach (XmlNode xn in xnList6)
@@ -90,7 +91,7 @@ namespace Monopoly
                 Convert.ToInt32(xn["Value2"].InnerText),
                 "",
                 Pole.Types.Spec,
-                "Wodociagi"));
+                "Wodociagi",0));
             };
             XmlNodeList xnList7 = xml.SelectNodes("/Plansza/Atrakcje/Elektrownia");
             foreach (XmlNode xn in xnList7)
@@ -100,7 +101,7 @@ namespace Monopoly
                 Convert.ToInt32(xn["Value2"].InnerText),
                 "",
                 Pole.Types.Spec,
-                "Elektrownia"));
+                "Elektrownia",0));
             }
             XmlNodeList xnList8 = xml.SelectNodes("/Plansza/Atrakcje/Podatek");
             foreach (XmlNode xn in xnList8)
@@ -110,7 +111,7 @@ namespace Monopoly
                 Convert.ToInt32(xn["Value2"].InnerText),
                 "",
                 Pole.Types.Spec,
-                "Podatek"));
+                "Podatek",0));
             }
             XmlNodeList xnList9 = xml.SelectNodes("/Plansza/Atrakcje/Parking");
             foreach (XmlNode xn in xnList9)
@@ -120,7 +121,7 @@ namespace Monopoly
                 Convert.ToInt32(xn["Value2"].InnerText),
                 "",
                 Pole.Types.Parking,
-                "Parking Płatny"));
+                "Parking Płatny",0));
             }
             XmlNodeList xnList10 = xml.SelectNodes("/Plansza/Atrakcje/Parkingfree");
             foreach (XmlNode xn in xnList10)
@@ -130,7 +131,7 @@ namespace Monopoly
                 Convert.ToInt32(xn["Value2"].InnerText),
                 "",
                 Pole.Types.ParkingFree,
-                "Parking darmowy"));
+                "Parking darmowy",0));
             }
             XmlNodeList xnList11 = xml.SelectNodes("/Plansza/Atrakcje/Wizyta");
             foreach (XmlNode xn in xnList11)
@@ -140,7 +141,7 @@ namespace Monopoly
                 0,
                 "",
                 Pole.Types.Spec,
-                "Wizyta w areszcie"));
+                "Wizyta w areszcie",0));
             }
             XmlNodeList xnList12 = xml.SelectNodes("/Plansza/Atrakcje/Areszt");
             foreach (XmlNode xn in xnList12)
@@ -150,7 +151,7 @@ namespace Monopoly
                 0,
                 "",
                 Pole.Types.Spec,
-                "Witaj w areszcie"));
+                "Witaj w areszcie",0));
             }
            
         }
@@ -171,6 +172,7 @@ namespace Monopoly
                         Tag = p,
                         Parent = this
                     };
+                    
                     Pola[p].x = Pola[p].Panelek.Margin.Left;
                     Pola[p].y = Pola[p].Panelek.Margin.Top;
                     Label Napis = new Label()
@@ -185,8 +187,40 @@ namespace Monopoly
                         ForeColor = Color.Black,
                         Visible = true
                     };
+                    if ((Pola[p].WhatType() != "Start" && Pola[p].WhatType() != "Quest" && Pola[p].WhatType() == "Spec") || Pola[p].WhatType() == "City")
+                    {
+                        Label Cena = new Label()
+                        {
+                            Text = Pola[p].HowPrice().ToString(),
+                            Top = 50,
+                            Left = 20,
+                            AutoSize = true,
+                            Name = i.ToString(),
+                            BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle,
+                            BackColor = Color.Transparent,
+                            ForeColor = Color.Black,
+                            Visible = true
+                        };
+                        Pola[p].Panelek.Controls.Add(Cena);
+
+                    }
+                    if ( Pola[p].WhatType() == "City")
+                    {
+                        Label hotel = new Label()
+                        {
+                            Text = Pola[p].HotelPrice.ToString(),
+                            Top = 50,
+                            Left = 50,
+                            AutoSize = true,
+                            Name = i.ToString(),
+                            BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle,
+                            BackColor = Color.Transparent,
+                            ForeColor = Color.Black,
+                            Visible = true
+                        };
+                        Pola[p].Panelek.Controls.Add(hotel);
+                    }
                     Pola[p].Panelek.Controls.Add(Napis);
-                    
                     this.Controls.Add(Pola[p].Panelek);
                     Pola[p].Panelek.Click += panel_click;
                     Pola[p].Panelek.ControlAdded += Panelek_ControlAdded;
@@ -222,7 +256,39 @@ namespace Monopoly
                     ForeColor = Color.Black,
                     Visible = true
                 };
-                
+                if ((Pola[p].WhatType() != "Start" && Pola[p].WhatType() != "Quest" && Pola[p].WhatType() == "Spec") || Pola[p].WhatType() == "City")
+                {
+                    Label Cena = new Label()
+                    {
+                        Text = Pola[p].HowPrice().ToString(),
+                        Top = 50,
+                        Left = 20,
+                        AutoSize = true,
+                        Name = i.ToString(),
+                        BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle,
+                        BackColor = Color.Transparent,
+                        ForeColor = Color.Black,
+                        Visible = true
+                    };
+                    Pola[p].Panelek.Controls.Add(Cena);
+
+                }
+                if (Pola[p].WhatType() == "City")
+                {
+                    Label hotel = new Label()
+                    {
+                        Text = Pola[p].HotelPrice.ToString(),
+                        Top = 50,
+                        Left = 50,
+                        AutoSize = true,
+                        Name = i.ToString(),
+                        BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle,
+                        BackColor = Color.Transparent,
+                        ForeColor = Color.Black,
+                        Visible = true
+                    };
+                    Pola[p].Panelek.Controls.Add(hotel);
+                }
                 Pola[p].Panelek.Controls.Add(Napis);
                 this.Controls.Add(Pola[p].Panelek);
                 Pola[p].Panelek.Click += panel_click;
@@ -262,7 +328,39 @@ namespace Monopoly
                     ForeColor = Color.Black,
                     Visible = true
                 };
-                
+                if ((Pola[p].WhatType() != "Start" && Pola[p].WhatType() != "Quest" && Pola[p].WhatType() == "Spec") || Pola[p].WhatType() == "City")
+                {
+                    Label Cena = new Label()
+                    {
+                        Text = Pola[p].HowPrice().ToString(),
+                        Top = 50,
+                        Left = 20,
+                        AutoSize = true,
+                        Name = i.ToString(),
+                        BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle,
+                        BackColor = Color.Transparent,
+                        ForeColor = Color.Black,
+                        Visible = true
+                    };
+                    Pola[p].Panelek.Controls.Add(Cena);
+
+                }
+                if (Pola[p].WhatType() == "City")
+                {
+                    Label hotel = new Label()
+                    {
+                        Text = Pola[p].HotelPrice.ToString(),
+                        Top = 50,
+                        Left = 50,
+                        AutoSize = true,
+                        Name = i.ToString(),
+                        BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle,
+                        BackColor = Color.Transparent,
+                        ForeColor = Color.Black,
+                        Visible = true
+                    };
+                    Pola[p].Panelek.Controls.Add(hotel);
+                }
                 Pola[p].Panelek.Controls.Add(Napis);
                 this.Controls.Add(Pola[p].Panelek);
                 Pola[p].Panelek.Click += panel_click;
@@ -299,7 +397,39 @@ namespace Monopoly
                     ForeColor = Color.Black,
                     Visible = true
                 };
-                
+                if ((Pola[p].WhatType() != "Start" && Pola[p].WhatType() != "Quest" && Pola[p].WhatType() == "Spec") || Pola[p].WhatType() == "City")
+                {
+                    Label Cena = new Label()
+                    {
+                        Text = Pola[p].HowPrice().ToString(),
+                        Top = 50,
+                        Left = 20,
+                        AutoSize = true,
+                        Name = i.ToString(),
+                        BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle,
+                        BackColor = Color.Transparent,
+                        ForeColor = Color.Black,
+                        Visible = true
+                    };
+                    Pola[p].Panelek.Controls.Add(Cena);
+
+                }
+                if (Pola[p].WhatType() == "City")
+                {
+                    Label hotel = new Label()
+                    {
+                        Text = Pola[p].HotelPrice.ToString(),
+                        Top = 50,
+                        Left = 50,
+                        AutoSize = true,
+                        Name = i.ToString(),
+                        BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle,
+                        BackColor = Color.Transparent,
+                        ForeColor = Color.Black,
+                        Visible = true
+                    };
+                    Pola[p].Panelek.Controls.Add(hotel);
+                }
                 Pola[p].Panelek.Controls.Add(Napis);
                 this.Controls.Add(Pola[p].Panelek);
                 Pola[p].Panelek.Click += panel_click;
@@ -338,6 +468,7 @@ namespace Monopoly
                 MessageBox.Show("Aktualnie mija twoja kolejka.");
                 Gracze[actualnygracz].Wiezienie -= 1;
                 Optiones(false, false, false, true);
+                NextPlayer();
             }
             
         }
@@ -402,14 +533,14 @@ namespace Monopoly
                                     }
                                 case 3:
                                     {
-                                        if (Gracze[actualnygracz].ActualPosition <= 31)
+                                        if (Gracze[actualnygracz].ActualPosition <= 30)
                                         {
-                                            Gracze[actualnygracz].ActualPosition = 31;
+                                            Gracze[actualnygracz].ActualPosition = 30;
                                         }
                                         else
                                         {
                                             Gracze[actualnygracz].GiveMoney(400);
-                                            Gracze[actualnygracz].ActualPosition = 31;
+                                            Gracze[actualnygracz].ActualPosition = 30;
                                         }
                                         break;
                                     }
@@ -431,6 +562,7 @@ namespace Monopoly
                                 case 7:
                                     {
                                         Gracze[actualnygracz].ActualPosition = 0;
+                                        Gracze[actualnygracz].TakeMoney(400);
                                         break;
                                     }
                                 case 8:
@@ -496,7 +628,7 @@ namespace Monopoly
                                     }
                                 case 2:
                                     {
-                                        Gracze[actualnygracz].ActualPosition = 15;
+                                        Gracze[actualnygracz].ActualPosition = 14;
                                         break;
                                     }
                                 case 3:
@@ -512,7 +644,8 @@ namespace Monopoly
                                     }
                                 case 5:
                                     {
-                                        Gracze[actualnygracz].ActualPosition = 1;
+                                        Gracze[actualnygracz].ActualPosition = 0;
+                                        Gracze[actualnygracz].TakeMoney(400);
                                         break;
                                     }
                                 case 6:
@@ -522,7 +655,7 @@ namespace Monopoly
                                     }
                                 case 7:
                                     {
-                                        if (Gracze[actualnygracz].ActualPosition <= 31)
+                                        if (Gracze[actualnygracz].ActualPosition <= 30)
                                         {
                                             Gracze[actualnygracz].ActualPosition = 30;
                                         }
@@ -558,7 +691,7 @@ namespace Monopoly
                                     }
                                 case 11:
                                     {
-                                        if (Gracze[actualnygracz].ActualPosition <= 24)
+                                        if (Gracze[actualnygracz].ActualPosition <= 23)
                                         {
                                             Gracze[actualnygracz].ActualPosition = 23;
                                         }
@@ -576,7 +709,7 @@ namespace Monopoly
                                     }
                                 case 13:
                                     {
-                                        if (Gracze[actualnygracz].ActualPosition <= 36)
+                                        if (Gracze[actualnygracz].ActualPosition <= 35)
                                         {
                                             Gracze[actualnygracz].ActualPosition = 35;
                                         }
@@ -616,6 +749,7 @@ namespace Monopoly
                             if (Pola[25].whoisowner() == Pol.whoisowner()) i++;
                             if (Pola[35].whoisowner() == Pol.whoisowner()) i++;
                             Gracze[actualnygracz].TakeMoney(200 + i * 50);
+                            Gracze[Pol.whoisowner()].GiveMoney(200 + i * 50);
                             MessageBox.Show("Zapłaciłeś właśnie: " + (200 + i * 50).ToString() + "$.");
                             Optiones(true, false, false, true);
                         }
@@ -629,7 +763,8 @@ namespace Monopoly
                             if (Pola[12].whoisowner() == Pol.whoisowner()) o++;
                             if (Pola[28].whoisowner() == Pol.whoisowner()) o++;
                             Gracze[actualnygracz].TakeMoney(200 + o * 100);
-                            Optiones(false, false, false, false);
+                            Gracze[Pol.whoisowner()].GiveMoney(200 + o * 100);
+                            Optiones(false, false, false, true);
                             MessageBox.Show("Zapłaciłeś właśnie: " + (200 + o * 100).ToString() + "$.");
                         }
 
@@ -638,6 +773,7 @@ namespace Monopoly
                             if (Gracze[actualnygracz].FreeWiezenie == true)
                             {
                                 MessageBox.Show("Wychodzisz wolny z wiezenia, tracisz karte.");
+                                Gracze[actualnygracz].FreeWiezenie = false;
                                 Optiones(false, false, false, true);
                             }
                             else
@@ -655,13 +791,12 @@ namespace Monopoly
 
                         if (Pol.WhitchPosition() == 39)
                         {
-                            MessageBox.Show("Płacisz podatek w wysokości 300$.");
-                            Gracze[actualnygracz].TakeMoney(300);
+                            MessageBox.Show("Płacisz podatek w wysokości 200$.");
+                            Gracze[actualnygracz].TakeMoney(200);
                             Optiones(false, false, false, true);
                         }
                         break;
                     }
-
                 default: 
                     {
                         Optiones(false, false, false, true);
@@ -700,7 +835,7 @@ namespace Monopoly
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (Gracze.Count <= 7)
+            if (Gracze.Count <= 8)
             {
                 textBox1.Text = "";
                 pictureBox9.Image = imageList1.Images[0];
@@ -726,24 +861,28 @@ namespace Monopoly
                 Gracze[id].GiveMoney(400);
             }
             Gracze[id].Pionek.Parent = Pola[Gracze[id].ActualPosition].Panelek;
-
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            Gracze.Add(new Gracz(textBox1.Text, 2000, temp1, Gracze.Count));
-            imageList2.Images.Add(imageList1.Images[Someint]);
-            imageList1.Images.RemoveAt(Someint);
-            Gracze[Gracze.Count-1].Pionek.Image = imageList2.Images[Gracze[Gracze.Count-1].Figure];
-            Gracze[Gracze.Count-1].Pionek.Visible = true;
-            groupBox1.Visible = false;
-            ListViewItem item = new ListViewItem(Gracze[temp1].Name);
-            item.SubItems.Add(Gracze[temp1].CashState().ToString());
-            item.SubItems.Add(0.ToString());
-            item.SubItems.Add(0.ToString());
-            item.SubItems.Add(0.ToString());
-            listView1.Items.Add(item);
-            temp1++;
-
+            if (textBox1.Text.Length > 4)
+            {
+                Gracze.Add(new Gracz(textBox1.Text, 2000, temp1, Gracze.Count));
+                imageList2.Images.Add(imageList1.Images[Someint]);
+                imageList1.Images.RemoveAt(Someint);
+                Gracze[Gracze.Count - 1].Pionek.Image = imageList2.Images[Gracze[Gracze.Count - 1].Figure];
+                Gracze[Gracze.Count - 1].Pionek.Visible = true;
+                groupBox1.Visible = false;
+                ListViewItem item = new ListViewItem(Gracze[temp1].Name);
+                item.SubItems.Add(Gracze[temp1].CashState().ToString());
+                item.SubItems.Add(0.ToString());
+                item.SubItems.Add(0.ToString());
+                item.SubItems.Add(0.ToString());
+                listView1.Items.Add(item);
+                temp1++;
+                if (Gracze.Count > 1) button5.Enabled = true;
+                if (Gracze.Count == 8) button2.Visible = false;
+            }
+            else MessageBox.Show("Nazwa za krótka");
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -756,7 +895,7 @@ namespace Monopoly
             groupBox2.Visible = true;
             AddPlayer.Visible = false;
             button2.Visible = false;
-
+            button5.Enabled = false;
         }
 
         public void UpdateListView()
@@ -799,14 +938,19 @@ namespace Monopoly
             Pola[Gracze[actualnygracz].ActualPosition].NewHouse();
             Gracze[actualnygracz].BuyHouse();
             Optiones(false, false, false, true);
+            PictureBox img = new PictureBox()
+            {
+                Top = 25,
+                Left = 10 + (20 * Pola[Gracze[actualnygracz].ActualPosition].HowHouse()-1),
+                Height = 20,
+                Width = 30,
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Image = Monopoly.Properties.Resources.House,
+                Visible = true
+            };
+            Pola[Gracze[actualnygracz].ActualPosition].Panelek.Controls.Add(img);
             UpdateListView();
         }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void DoNothing_Click(object sender, EventArgs e)
         {
             button1.Enabled = true;
@@ -820,6 +964,16 @@ namespace Monopoly
             Pola[Gracze[actualnygracz].ActualPosition].NewHouse();
             Gracze[actualnygracz].BuyHotel(Pola[Gracze[actualnygracz].ActualPosition].HowHotel());
             Optiones(false, false, false, true);
+            PictureBox img = new PictureBox()
+            {
+                Top = 25,
+                Left = 5 + (20 * Pola[Gracze[actualnygracz].ActualPosition].HowHotel() - 1),
+                Height = 20,
+                Width = 30,
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Image = Monopoly.Properties.Resources.czerwony,
+                Visible = true
+            };
             UpdateListView();
         }
 
@@ -828,7 +982,9 @@ namespace Monopoly
             if (e.KeyCode == Keys.Enter) AddPlayer.PerformClick();
         }
 
-      
-        
+        private void PayFine_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
