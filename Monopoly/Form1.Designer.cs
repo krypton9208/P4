@@ -66,9 +66,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 19);
+            this.button1.Location = new System.Drawing.Point(8, 23);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 65);
+            this.button1.Size = new System.Drawing.Size(227, 80);
             this.button1.TabIndex = 9;
             this.button1.Text = "Rzuć koścami";
             this.button1.UseVisualStyleBackColor = true;
@@ -78,17 +79,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(182, 19);
+            this.label1.Location = new System.Drawing.Point(243, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 63);
+            this.label1.Size = new System.Drawing.Size(71, 76);
             this.label1.TabIndex = 10;
             this.label1.Text = "0";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(282, 253);
+            this.button2.Location = new System.Drawing.Point(376, 311);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 11;
             this.button2.Text = "Nowy gracz";
             this.button2.UseVisualStyleBackColor = true;
@@ -96,9 +99,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(26, 19);
+            this.textBox1.Location = new System.Drawing.Point(35, 23);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(110, 20);
+            this.textBox1.Size = new System.Drawing.Size(145, 22);
             this.textBox1.TabIndex = 12;
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
@@ -117,9 +121,10 @@
             // 
             // AddPlayer
             // 
-            this.AddPlayer.Location = new System.Drawing.Point(52, 131);
+            this.AddPlayer.Location = new System.Drawing.Point(69, 161);
+            this.AddPlayer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AddPlayer.Name = "AddPlayer";
-            this.AddPlayer.Size = new System.Drawing.Size(75, 23);
+            this.AddPlayer.Size = new System.Drawing.Size(100, 28);
             this.AddPlayer.TabIndex = 14;
             this.AddPlayer.Text = "Dodaj";
             this.AddPlayer.UseVisualStyleBackColor = true;
@@ -134,9 +139,10 @@
             // button5
             // 
             this.button5.Enabled = false;
-            this.button5.Location = new System.Drawing.Point(178, 253);
+            this.button5.Location = new System.Drawing.Point(237, 311);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(98, 23);
+            this.button5.Size = new System.Drawing.Size(131, 28);
             this.button5.TabIndex = 16;
             this.button5.Text = "Rozpocznij grę";
             this.button5.UseVisualStyleBackColor = true;
@@ -149,16 +155,18 @@
             this.panel2.Controls.Add(this.BuyHotel);
             this.panel2.Controls.Add(this.BuyHouse);
             this.panel2.Controls.Add(this.BuyObject);
-            this.panel2.Location = new System.Drawing.Point(740, 243);
+            this.panel2.Location = new System.Drawing.Point(987, 299);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(154, 220);
+            this.panel2.Size = new System.Drawing.Size(205, 270);
             this.panel2.TabIndex = 18;
             // 
             // DoNothing
             // 
-            this.DoNothing.Location = new System.Drawing.Point(3, 168);
+            this.DoNothing.Location = new System.Drawing.Point(4, 207);
+            this.DoNothing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DoNothing.Name = "DoNothing";
-            this.DoNothing.Size = new System.Drawing.Size(146, 45);
+            this.DoNothing.Size = new System.Drawing.Size(195, 55);
             this.DoNothing.TabIndex = 19;
             this.DoNothing.Text = "Nic nie rób";
             this.DoNothing.UseVisualStyleBackColor = true;
@@ -167,9 +175,10 @@
             // 
             // BuyHotel
             // 
-            this.BuyHotel.Location = new System.Drawing.Point(3, 114);
+            this.BuyHotel.Location = new System.Drawing.Point(4, 140);
+            this.BuyHotel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BuyHotel.Name = "BuyHotel";
-            this.BuyHotel.Size = new System.Drawing.Size(146, 48);
+            this.BuyHotel.Size = new System.Drawing.Size(195, 59);
             this.BuyHotel.TabIndex = 20;
             this.BuyHotel.Text = "Kup hotel";
             this.BuyHotel.UseVisualStyleBackColor = true;
@@ -178,9 +187,10 @@
             // 
             // BuyHouse
             // 
-            this.BuyHouse.Location = new System.Drawing.Point(3, 63);
+            this.BuyHouse.Location = new System.Drawing.Point(4, 78);
+            this.BuyHouse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BuyHouse.Name = "BuyHouse";
-            this.BuyHouse.Size = new System.Drawing.Size(146, 45);
+            this.BuyHouse.Size = new System.Drawing.Size(195, 55);
             this.BuyHouse.TabIndex = 19;
             this.BuyHouse.Text = "Kup dom";
             this.BuyHouse.UseVisualStyleBackColor = true;
@@ -189,9 +199,10 @@
             // 
             // BuyObject
             // 
-            this.BuyObject.Location = new System.Drawing.Point(3, 12);
+            this.BuyObject.Location = new System.Drawing.Point(4, 15);
+            this.BuyObject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BuyObject.Name = "BuyObject";
-            this.BuyObject.Size = new System.Drawing.Size(146, 45);
+            this.BuyObject.Size = new System.Drawing.Size(195, 55);
             this.BuyObject.TabIndex = 0;
             this.BuyObject.Text = "Kup obiekt";
             this.BuyObject.UseVisualStyleBackColor = true;
@@ -203,9 +214,11 @@
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.pictureBox9);
             this.groupBox1.Controls.Add(this.AddPlayer);
-            this.groupBox1.Location = new System.Drawing.Point(388, 179);
+            this.groupBox1.Location = new System.Drawing.Point(517, 220);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(156, 160);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(208, 197);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dane gracza";
@@ -214,9 +227,10 @@
             // pictureBox9
             // 
             this.pictureBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox9.Location = new System.Drawing.Point(26, 45);
+            this.pictureBox9.Location = new System.Drawing.Point(35, 55);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(101, 80);
+            this.pictureBox9.Size = new System.Drawing.Size(134, 98);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox9.TabIndex = 13;
             this.pictureBox9.TabStop = false;
@@ -232,10 +246,11 @@
             this.Hotele});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(134, 345);
+            this.listView1.Location = new System.Drawing.Point(179, 425);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(600, 172);
+            this.listView1.Size = new System.Drawing.Size(799, 211);
             this.listView1.TabIndex = 20;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -269,9 +284,11 @@
             // 
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(740, 482);
+            this.groupBox2.Location = new System.Drawing.Point(987, 593);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(270, 91);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(360, 112);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kości";
@@ -279,18 +296,20 @@
             // 
             // Czerwone
             // 
-            this.Czerwone.Location = new System.Drawing.Point(76, 56);
+            this.Czerwone.Location = new System.Drawing.Point(101, 69);
+            this.Czerwone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Czerwone.Name = "Czerwone";
-            this.Czerwone.Size = new System.Drawing.Size(567, 43);
+            this.Czerwone.Size = new System.Drawing.Size(755, 52);
             this.Czerwone.TabIndex = 22;
             this.Czerwone.Text = resources.GetString("Czerwone.Text");
             this.Czerwone.Visible = false;
             // 
             // Niebieskie
             // 
-            this.Niebieskie.Location = new System.Drawing.Point(76, 105);
+            this.Niebieskie.Location = new System.Drawing.Point(101, 129);
+            this.Niebieskie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Niebieskie.Name = "Niebieskie";
-            this.Niebieskie.Size = new System.Drawing.Size(567, 68);
+            this.Niebieskie.Size = new System.Drawing.Size(755, 83);
             this.Niebieskie.TabIndex = 23;
             this.Niebieskie.Text = resources.GetString("Niebieskie.Text");
             this.Niebieskie.Visible = false;
@@ -299,9 +318,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(228, 617);
+            this.label2.Location = new System.Drawing.Point(304, 759);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(220, 36);
+            this.label2.Size = new System.Drawing.Size(274, 42);
             this.label2.TabIndex = 24;
             this.label2.Text = "Aktualny gracz:";
             // 
@@ -309,27 +329,29 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(449, 617);
+            this.label3.Location = new System.Drawing.Point(599, 759);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 36);
+            this.label3.Size = new System.Drawing.Size(0, 42);
             this.label3.TabIndex = 25;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Monopoly.Properties.Resources.monopoly_us_pack_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(224, 656);
+            this.pictureBox1.Location = new System.Drawing.Point(299, 807);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(640, 320);
+            this.pictureBox1.Size = new System.Drawing.Size(853, 394);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 26;
             this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1025, 741);
+            this.ClientSize = new System.Drawing.Size(1367, 912);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -341,10 +363,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button2);
-            this.MinimumSize = new System.Drawing.Size(1024, 726);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1359, 883);
             this.Name = "Form1";
             this.Tag = "a";
-            this.Text = "Monopoly in Windows Form Aplication C#";
+            this.Text = " ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel2.ResumeLayout(false);
