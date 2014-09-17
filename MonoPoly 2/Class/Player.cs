@@ -4,73 +4,96 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MonoPoly_2
+namespace MonoPoly_2.Class
 {
-   
-    public class Player
+    class Player: IActions
     {
-         private string Name {get;set;}
-         private Guid ID { get; set; }
-         private int ActPos { get; set; }
-         private int Cash { get; set; }
-         public Player(string name, int id)
-         {
-             Name = name;
-             ID = Guid.NewGuid();
-             ActPos = 0;
-             Cash = 5000;
-         }
+        
+        private int Money;
+        private int ActualPosition;
+        private string Name;
+        private Guid ID;
+        private int CounterID;
 
-        public Player()
-         {
-             ID = Guid.Empty;
-         }
+        public Player (string name, int counterid)
+        {
+            Money = 5000;
+            ActualPosition = 1;
+            Name = name;
+            ID = Guid.NewGuid();
+            CounterID = counterid;
+        }
 
-         public string GetPlayerName() { return Name; }
-         public int GetPlayerPos() { return ActPos; }
-         public int CashState() { return Cash; }
-         protected int RailwaysNumber { get; set; }
-         public int GetRailwaysNumber
-         {
-             set
-             {
-                 RailwaysNumber += value;
-             }
-             get
-             {
-                 return RailwaysNumber;
-             }
-         }
-         public Guid GetPlayerID { get { return ID; } }
-         public void GivePlayerMoney(int c) { Cash += c; }
-         public Boolean TakePlayerMoney(int d) 
-         {
-             if (Cash - d <= 0)
-             {
-                 Cash -= d;
-                 return false;
+        public int NextStep()
+        {
+            int a, b, suma = 0;
+            do
+            {
 
-             }
-             Cash -= d;
-             return true;
-         }
-         public void MovePlayer(int t)
-         {
-             if (ActPos + t >= 40)
-             {
-                 ActPos += t - 40;
-             }
-             else
-             {
-                 ActPos += t;
-             }
-         }
-         public int RollTheDice()
-         {
-             Random rnd = new Random();
-             MovePlayer(rnd.Next(1, 13));
-             return Convert.ToInt32(rnd);
-         }
-         
+                Random t = new Random();
+                a = t.Next(0, 7);
+                System.Threading.Thread.Sleep(200);
+                Random y = new Random();
+                b = y.Next(0, 7);
+                suma += a + b;
+            }
+            while (a == b);
+            return suma;
+
+        }
+        public void NewPosition(int x)
+        {
+            if (ActualPosition + x >= 40)
+            {
+                ActualPosition += x - 40;
+            }
+            else
+                ActualPosition += x;
+        }
+        public bool GetMoneyFromAccount(int Fine)
+        {
+            if (Fine < Money)
+            {
+                Money -= Fine;
+                return true;
+            }
+            else
+            {
+                Money -= Fine;
+                return false;
+            }
+        }
+        public void GetMoneyToAccount( int Pewter)
+        {
+            Money += Math.Abs(Pewter);
+        }
+        public int GetAccountInfo
+        {
+            get
+            {
+                return Money;
+            }
+        }
+        public string GetPlayerName
+        {
+            get
+            {
+                return Name;
+            }
+        }
+        public Guid GetPlayerID
+        {
+            get
+            {
+                return ID;
+            }
+        }
+        public int GetPlayerCounterID
+        {
+            get
+            {
+                return CounterID;
+            }
+        }
     }
 }

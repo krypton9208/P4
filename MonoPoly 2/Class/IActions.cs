@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace MonoPoly_2.Class
 {
-    class Pole : IActions
+    class IActions
     {
-       
-        protected int Number;
-        protected string Name;
-        protected string ImgString;
+        public enum Actions { BuyThisThink, BuyHouse, BuyHotel, PayForVisit, FreeVisit, TakeMoney, NextPlayer, PullAQuest };
     }
 }
